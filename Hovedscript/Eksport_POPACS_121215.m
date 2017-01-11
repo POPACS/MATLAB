@@ -6,7 +6,7 @@ cd('M:\POPACS\Matlab')
 matfiler = deblank(matfiler)
 
 
-%Definerer f¯rst output fil:
+%Definerer f√∏rst output fil:
 cd('M:\POPACS\Matlab\Output\POPACS_tekstfiler')
 fid1 = fopen('Output POPACS Table 1_021215.txt','wt');
 fprintf(fid1,'%s\t %s\t %s\t %s\t %s\n', 'PasID','Date','Age','Sex','TimeHDU');
@@ -54,17 +54,17 @@ fid15 = fopen('Output POPACS FENTANYL Table2_021215.txt','wt');
 fprintf(fid15,'%s\t %s\n','PasID','Fentanyl');
 
 fid16 = fopen('Output POPACS Regression data_071215.txt','wt');
-fprintf(fid16,'%s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\n','PasID','Alder','Kj¯nn','BMI','Bloodloss','Kirtid','Timeto_offNA','Timeto_offNA_dich','Peropveske');
+fprintf(fid16,'%s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\n','PasID','Alder','Kj√∏nn','BMI','Bloodloss','Kirtid','Timeto_offNA','Timeto_offNA_dich','Peropveske');
 
 
-%For-l¯kke gjennom alle Mat-filer
+%For-l√∏kke gjennom alle Mat-filer
     for I = 1:size(matfiler,1)
     %I = 1;
     cd('M:\POPACS\Matlab\Output\POPACS_matfiler')
     matfil = char(matfiler(I))
     load(matfil)
 
-%DatahÂndtering
+%Datah√•ndtering
 cd('M:\POPACS\Matlab')
 
 typekir = finneKirtype(PasID)  %%Bestemmer kirurgitype per pasient. 
@@ -73,7 +73,7 @@ try
 KirTid = (datenum(KirSlutt) - datenum(KirStart))*24; %Kirurgitid i timer
 catch
     KirTid = 0;
-    disp('Tr¯bbel med Kir-tid')
+    disp('Tr√∏bbel med Kir-tid')
 end
 
 timetoNAoff = find_timeoffnoradr(Noradr,time,1);
@@ -145,9 +145,9 @@ if size(PO_veske_spell,1) == size(PO_noradr_spell,1)
     if ~isempty(a)
     timeoffHDU = a(1,1);
     else
-        if HDU_status_spell(end,5) > 1 %Fortsatt pÂ noradrenalin i slutten av HDU_status_spell
+        if HDU_status_spell(end,5) > 1 %Fortsatt p√• noradrenalin i slutten av HDU_status_spell
         timeoffHDU = HDU_status_spell(end,4); %obs kolonne 4 og ikke 3
-        disp('Fortsatt pÂ noradrenalin i slutten av HDU_status_spell')
+        disp('Fortsatt p√• noradrenalin i slutten av HDU_status_spell')
         end
     end
 
@@ -163,9 +163,9 @@ else disp('PO_veske_spell og PO_noradr_spell er IKKE LIKE LANGE')
        if ~isempty(a)
        timeoffHDU = a(1,1);
        else
-        if HDU_status_spell(end,5) > 1 %Fortsatt pÂ noradrenalin i slutten av HDU_status_spell
+        if HDU_status_spell(end,5) > 1 %Fortsatt p√• noradrenalin i slutten av HDU_status_spell
         timeoffHDU = HDU_status_spell(end,4); %obs kolonne 4 og ikke 3
-        disp('Fortsatt pÂ noradrenalin i slutten av HDU_status_spell')
+        disp('Fortsatt p√• noradrenalin i slutten av HDU_status_spell')
         end
        end
 
@@ -226,13 +226,13 @@ for l = 1:size(PO_timemed_status_spell,1)
     fprintf(fid10,'%4d\t %2d\t %2d\t %2d\t %2d\n',PO_timemed_status_spell(l,:));
 end
 
-%Eventuell plotting av vÊskebehov for test:
+%Eventuell plotting av v√¶skebehov for test:
 
-%plot(tidpostop/60, PO_Isoveskearray(1:end,2),'-') %VÊskebehov i PO-tid
+%plot(tidpostop/60, PO_Isoveskearray(1:end,2),'-') %V√¶skebehov i PO-tid
 %axis([-1,40,0,1000])
 %line(perioptime/60, sBT,'Marker','V')
 %line(perioptime/60, dBT,'Marker','o')
-%plotnavn = ['VÊskebehov pasient ' int2str(PasID)];
+%plotnavn = ['V√¶skebehov pasient ' int2str(PasID)];
 %title(plotnavn)
 %print(plotnavn,'-dpng')
 
